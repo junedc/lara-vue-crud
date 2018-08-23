@@ -18,6 +18,11 @@ window._ = require('lodash');
 window.Vue = require('vue');
 require('vue-resource');
 
+
+window.axios = require('axios');
+
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
 /**
  * We'll register a HTTP interceptor to attach the "CSRF" header to each of
  * the outgoing requests issued by this application. The CSRF middleware

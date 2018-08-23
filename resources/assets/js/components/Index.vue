@@ -225,22 +225,46 @@
 
                     let url = this.url + '/' + rowData.id;
 
-                    Vue.http.post(url, formData)
-                        .then(response => {
-                            swal(
-                                'Success',
-                                'Your data has been deleted.',
-                                'success'
-                            );
+                    // Vue.http.post(url, formData)
+                    //     .then(response => {
+                    //         swal(
+                    //             'Success',
+                    //             'Your data has been deleted.',
+                    //             'success'
+                    //         );
 
-                            this.$broadcast('vuetable:refresh');
-                        }).catch(response => {
-                            swal(
-                                    'Error',
-                                    'Failed to delete your data.',
-                                    'error'
+                    //         this.$broadcast('vuetable:refresh');
+                    //     }).catch(response => {
+                    //         swal(
+                    //                 'Error',
+                    //                 'Failed to delete your data.',
+                    //                 'error'
+                    //         );
+                    //     });
+
+                    axios.post(url ,formData)
+                    .then(response => {
+                        console.log('record successfully deleted');
+                        console.log(response);
+                        this.$broadcast('vuetable:refresh');
+                    })
+                    .catch(function (error) {
+                        // handle error
+                        console.log(error);
+                        swal(
+                                        'Error',
+                                        'Failed to delete your data.',
+                                        'error'
                             );
-                        });
+                          })
+                      .then(function () {
+                         console.log('always executed');
+                      });
+
+
+                   
+
+
                 })
             },
         }

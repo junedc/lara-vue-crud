@@ -27,7 +27,8 @@
     "vue-strap": "^1.1.15",
     "vue-style-loader": "^1.0.0",
     "vuetable": "^1.5.1",
-    "webpack": "^1.13.2"
+    "webpack": "^1.13.2",
+    "axios": "^0.16.2"
   },
   "dependencies": {}
 }

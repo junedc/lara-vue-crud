@@ -43,6 +43,7 @@
 <script>
     export default {
         created() {
+            console.log('getting students');
             this.$http.get('/api/students/' + this.$route.params.studentId)
                 .then(response => {
                     this.student = response.data;

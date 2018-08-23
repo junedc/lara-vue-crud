@@ -35,8 +35,29 @@
         },
         methods: {
             submit(formData) {
-                this.$http.post(this.url, formData)
+                // this.$http.post(this.url, formData)
+                //     .then(response => {
+                //         let alert = {
+                //             show: true,
+                //             type: 'success',
+                //             title: 'Success',
+                //             message: 'Student successfully created.'
+                //         };
+
+                //         this.$broadcast('showAlert', alert);
+
+                //         this.resetForm();
+                //     }).catch(response => {
+                //         let errors = response.body;
+
+                //         this.$broadcast('formErrors', errors);
+                //     });
+
+
+
+                     axios.post(this.url ,formData)
                     .then(response => {
+                        console.log('record successfully created');
                         let alert = {
                             show: true,
                             type: 'success',
@@ -47,11 +68,16 @@
                         this.$broadcast('showAlert', alert);
 
                         this.resetForm();
-                    }).catch(response => {
-                        let errors = response.body;
-
-                        this.$broadcast('formErrors', errors);
-                    });
+                    })
+                    .catch(function (error) {
+                        // handle error
+                            console.log(error);
+                            let errors = response.body;
+                            this.$broadcast('formErrors', errors);
+                          })
+                      .then(function () {
+                         console.log('always executed');
+                      });
             },
             resetForm() {
                 this.student = {
